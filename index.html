@@ -290,7 +290,7 @@
             e.preventDefault();
             const rates = { eBay: 0.1, Amazon: 0.15, AliExpress: 0.05 };
             const commission = document.getElementById('amount').value * rates[document.getElementById('store').value];
-            document.getElementById('result').innerHTML = Commissione: €${commission.toFixed(2)};
+            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}`;
         });
 
         // Filtri Video
