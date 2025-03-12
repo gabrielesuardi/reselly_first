@@ -58,6 +58,10 @@
             }
         }
 
+        h1.start-animation span {
+            animation: bounce 0.5s ease infinite alternate;
+        }
+
         h1 + p {
             font-family: 'Poppins', sans-serif;
             font-size: 1.2em;
@@ -133,7 +137,8 @@
 
         .card img {
             width: 100%;
-            height: 180px;
+            height: auto;
+            aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: calc(var(--border-radius) - 2px);
             margin-bottom: var(--spacing-small);
@@ -230,9 +235,9 @@
         }
     </style>
 </head>
-<body>
+<body onload="startTitleAnimation()">
     <header>
-        <h1>
+        <h1 id="title-animation">
             <span>R</span><span>E</span><span>S</span><span>E</span><span>L</span><span>L</span><span>Y</span>
         </h1>
         <p>Gratis per sempre</p>
@@ -261,9 +266,9 @@
                 <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
             </div>
             <div class="card">
-                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S17c9d33d460c495ab8a8ffe1aa00cba5x.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
+                <img src="https://cdn-icons-png.freepik.com/512/3301/3301172.png" alt="Imballaggio">
                 <p>Bolle protettive</p>
-                <button class="buy-button" href="https://www.aliexpress.com/ssr/300000512/BundleDeals2?spm=a2g0o.home.3fornn.1.78d06a54A5pIXh&disableNav=YES&pha_manifest=ssr&_immersiveMode=true&businessCode=guide&_gl=1*1uuhp4i*_gcl_aw*R0NMLjE3MzYxMTE2MjAuQ2p3S0NBaUEtT2k3QmhBMUVpd0Eyckl1MjJnRlJoR2tCcGliQS1na1o5NmFNXzNiQzVyVEk5cmRWczZWM3o1elcxcFFPcTlRS1FfeHlCb0NYZVVRQXZEX0J3RQ..*_gcl_au*OTQ4MDk4OTczLjE3MzUyNTM0MTI.*_ga*NTUzNTA1MzEuMTcyNDU3MDA3NQ..*_ga_VED1YSGNC7*MTc0MTc5NjM4OS43LjEuMTc0MTc5NjM5My41Ni4wLjA.&productIds=1005007805672349"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
+                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
             </div>
         </div>
     </div>
@@ -390,6 +395,14 @@
                 }, 300);
             });
         });
+
+        function startTitleAnimation() {
+            const title = document.getElementById('title-animation');
+            title.classList.add('start-animation');
+            setTimeout(() => {
+                title.classList.remove('start-animation');
+            }, 3000); // Adjust the duration as needed
+        }
     </script>
 </body>
 </html>
