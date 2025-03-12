@@ -129,19 +129,40 @@
         }
 
         .card {
+            position: relative;
             border: 2px solid #000;
             border-radius: var(--border-radius);
             padding: var(--spacing-small);
             text-align: center;
+            transition: transform 0.2s;
         }
 
         .card img {
             width: 100%;
             height: auto;
-            aspect-ratio: 1/1;
+            aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: calc(var(--border-radius) - 2px);
             margin-bottom: var(--spacing-small);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card .checkmark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .card.checked .checkmark {
+            display: block;
         }
 
         .video-container {
@@ -249,8 +270,7 @@
         <form id="calculatorForm">
             <select id="store" onchange="toggleInputField()">
                 <option value="eBay">eBay</option>
-                <option value="Amazon">Amazon</option>
-                <option value="AliExpress">AliExpress</option>
+                <option value="Vinted">Vinted</option>
             </select>
             <input type="number" id="amount" placeholder="Importo Vendita (€)" required>
             <input type="number" id="optionalInput" placeholder="% pubblicitaria" required>
@@ -293,42 +313,49 @@
     <!-- Video -->
     <div id="guida" class="tab-content">
         <div class="video-filters">
-            <button class="video-filter active" data-filter="all">Tutti</button>
-            <button class="video-filter" data-filter="ebay">eBay</button>
-            <button class="video-filter" data-filter="vinted">Vinted</button>
-            <button class="video-filter" data-filter="etsy">Etsy</button>
-            <button class="video-filter" data-filter="cardmarket">Cardmarket</button>
-            <button class="video-filter" data-filter="subito">Subito</button>
-            <button class="video-filter" data-filter="truffe" style="background-color: yellow;">Truffe</button>
+            <button class="video-filter active" data-filter="all"><i class="fa-brands fa-youtube"></i> Tutti</button>
+            <button class="video-filter" data-filter="ebay"><i class="fa-brands fa-youtube"></i> eBay</button>
+            <button class="video-filter" data-filter="vinted"><i class="fa-brands fa-youtube"></i> Vinted</button>
+            <button class="video-filter" data-filter="etsy"><i class="fa-brands fa-youtube"></i> Etsy</button>
+            <button class="video-filter" data-filter="cardmarket"><i class="fa-brands fa-youtube"></i> Cardmarket</button>
+            <button class="video-filter" data-filter="subito"><i class="fa-brands fa-youtube"></i> Subito</button>
+            <button class="video-filter" data-filter="truffe" style="background-color: yellow;"><i class="fa-brands fa-youtube"></i> Truffe</button>
         </div>
         <div class="video-container">
-            <div class="card video-item" data-platform="ebay">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
                 <p>Guida eBay Base</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="truffe">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
                 <p>Truffe su eBay</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="truffe">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
                 <p>Truffe su Subito</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="truffe">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
                 <p>Truffe su Vinted</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="vinted">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
                 <p>Vinted Pro Tips</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="etsy">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
                 <p>Etsy Marketing</p>
+                <div class="checkmark"></div>
             </div>
-            <div class="card video-item" data-platform="cardmarket">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
                 <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
                 <p>Cardmarket Advanced</p>
+                <div class="checkmark"></div>
             </div>
         </div>
     </div>
@@ -342,7 +369,7 @@
             <i class="fa-solid fa-boxes-packing"></i> Fornitori
         </button>
         <button class="tab-button" onclick="openTab('guida')">
-            <i class="fa-solid fa-video"></i>
+            <i class="fa-brands fa-youtube"></i>
         </button>
     </div>
 
@@ -366,13 +393,17 @@
 
         document.getElementById('calculatorForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const rates = { eBay: 0.1, Amazon: 0.15, AliExpress: 0.05 };
+            const rates = { eBay: 0.1, Vinted: 0 };
             const amount = document.getElementById('amount').value;
             const optionalValue = document.getElementById('optionalInput').value;
             const store = document.getElementById('store').value;
-            const commission = amount * rates[store];
-            const totalCost = amount - (optionalValue / 100 * amount);
-            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}<br>Totale: €${totalCost.toFixed(2)}`;
+            let commission;
+            if (store === 'eBay') {
+                commission = amount * rates[store] + (amount * (optionalValue / 100));
+            } else if (store === 'Vinted') {
+                commission = Number(optionalValue);
+            }
+            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}`;
         });
 
         document.querySelectorAll('.video-filter').forEach(button => {
@@ -402,6 +433,10 @@
             setTimeout(() => {
                 title.classList.remove('start-animation');
             }, 3000); // Adjust the duration as needed
+        }
+
+        function toggleCheckmark(card) {
+            card.classList.toggle('checked');
         }
     </script>
 </body>
