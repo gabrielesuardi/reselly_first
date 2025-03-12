@@ -137,11 +137,16 @@
             padding: 8px 15px;
             border-radius: var(--border-radius);
             cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: perspective(1px) translateZ(0);
         }
-
-        .video-filter.active {
+        
+        .video-filter.active,
+        .video-filter:hover {
             background: #000;
             color: #fff;
+            transform: scale(1.05) perspective(1px) translateZ(0);
         }
 
         .buy-button {
@@ -264,46 +269,46 @@
 
     <!-- Video -->
     <div id="guida" class="tab-content">
-        <div class="video-filters">
-            <button class="video-filter active" data-filter="all">Tutti</button>
-            <button class="video-filter" data-filter="ebay">eBay</button>
-            <button class="video-filter" data-filter="vinted">Vinted</button>
-            <button class="video-filter" data-filter="etsy">Etsy</button>
-            <button class="video-filter" data-filter="cardmarket">Cardmarket</button>
-            <button class="video-filter" data-filter="subito">Subito</button>
-            <button class="video-filter" data-filter="truffe" style="background-color: yellow;">Truffe</button>
+    <div class="video-filters">
+        <button class="video-filter active" data-filter="all">Tutti</button>
+        <button class="video-filter" data-filter="ebay">eBay</button>
+        <button class="video-filter" data-filter="vinted">Vinted</button>
+        <button class="video-filter" data-filter="etsy">Etsy</button>
+        <button class="video-filter" data-filter="cardmarket">Cardmarket</button>
+        <button class="video-filter" data-filter="subito">Subito</button>
+        <button class="video-filter" data-filter="truffe" style="background-color: yellow;">Truffe</button>
+    </div>
+    <div class="video-container">
+        <div class="card video-item" data-platform="ebay">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+            <p>Guida eBay Base</p>
         </div>
-        <div class="video-container">
-            <div class="card video-item" data-platform="ebay">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Guida eBay Base</p>
-            </div>
-            <div class="card video-item" data-platform="truffe">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su eBay</p>
-            </div>
-            <div class="card video-item" data-platform="truffe">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su Subito</p>
-            </div>
-            <div class="card video-item" data-platform="truffe">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su Vinted</p>
-            </div>
-            <div class="card video-item" data-platform="vinted">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
-                <p>Vinted Pro Tips</p>
-            </div>
-            <div class="card video-item" data-platform="etsy">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
-                <p>Etsy Marketing</p>
-            </div>
-            <div class="card video-item" data-platform="cardmarket">
-                <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
-                <p>Cardmarket Advanced</p>
-            </div>
+        <div class="card video-item" data-platform="truffe">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+            <p>Truffe su eBay</p>
+        </div>
+        <div class="card video-item" data-platform="truffe">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+            <p>Truffe su Subito</p>
+        </div>
+        <div class="card video-item" data-platform="truffe">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+            <p>Truffe su Vinted</p>
+        </div>
+        <div class="card video-item" data-platform="vinted">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
+            <p>Vinted Pro Tips</p>
+        </div>
+        <div class="card video-item" data-platform="etsy">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
+            <p>Etsy Marketing</p>
+        </div>
+        <div class="card video-item" data-platform="cardmarket">
+            <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
+            <p>Cardmarket Advanced</p>
         </div>
     </div>
+</div>
 
     <!-- Tab Bar -->
     <div class="tab-container">
