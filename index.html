@@ -70,13 +70,6 @@
             align-items: center;
             justify-content: center;
         }
-
-        .tab-button:hover,
-        .tab-button.active {
-            background: #000;
-            color: #fff;
-        }
-
         .tab-button:nth-child(2) {
             padding: 12px 25px;
         }
@@ -182,15 +175,40 @@
         }
 
         /* CSS Animations */
-        @keyframes clickAnimation {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
-        }
 
-        .video-item.animate {
-            animation: clickAnimation 0.3s ease;
-        }
+        .tab-button {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+            padding: 12px 18px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: perspective(1px) translateZ(0);
+    }
+    
+    .tab-button:hover,
+    .tab-button.active {
+        background: #000;
+        color: #fff;
+        transform: scale(1.05) perspective(1px) translateZ(0);
+    }
+    
+    @keyframes clickAnimation {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+    }
+    
+    .video-item.animate {
+        animation: clickAnimation 0.3s ease;
+    }
+
     </style>
 </head>
 <body>
@@ -232,7 +250,7 @@
         <h2><i class="fa-solid fa-truck-fast icon"></i>FORNITORI</h2>
         <div class="grid">
             <div class="card">
-                <img src="fornitore1.jpg" alt="Fornitore">
+                <img src="new_fornitore_elettronica.jpg" alt="Fornitore Elettronica">
                 <p>Fornitore Elettronica</p>
                 <button class="buy-button">Contatta</button>
             </div>
