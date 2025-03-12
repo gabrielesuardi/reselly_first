@@ -12,6 +12,7 @@
             --spacing-large: 40px;
             --spacing-medium: 25px;
             --spacing-small: 15px;
+            --animation-duration: 0.5s; /* Extended animation duration */
         }
 
         body {
@@ -41,7 +42,7 @@
 
         h1 span {
             display: inline-block;
-            animation: bounce 0.5s ease infinite alternate;
+            animation: bounce var(--animation-duration) ease infinite alternate;
         }
 
         h1 span:nth-child(odd) {
@@ -59,7 +60,7 @@
         }
 
         h1.start-animation span {
-            animation: bounce 0.5s ease infinite alternate;
+            animation: bounce var(--animation-duration) ease infinite alternate;
         }
 
         h1 + p {
@@ -95,7 +96,7 @@
             padding: 12px 18px;
             font-size: 1.2em;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all var(--animation-duration);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
@@ -134,7 +135,7 @@
             border-radius: var(--border-radius);
             padding: var(--spacing-small);
             text-align: center;
-            transition: transform 0.2s;
+            transition: transform var(--animation-duration);
         }
 
         .card img {
@@ -173,7 +174,7 @@
 
         .video-item iframe {
             width: 100%;
-            height: 250px;
+            height: 200px; /* Adjusted height for better mobile view */
             border: 2px solid #000;
             border-radius: var(--border-radius);
         }
@@ -192,7 +193,7 @@
             padding: 8px 15px;
             border-radius: var(--border-radius);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all var(--animation-duration);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transform: perspective(1px) translateZ(0);
         }
@@ -211,7 +212,7 @@
             padding: 8px 20px;
             border-radius: calc(var(--border-radius) - 2px);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all var(--animation-duration);
             margin-top: var(--spacing-small);
         }
 
@@ -252,7 +253,7 @@
         }
 
         .video-item.animate {
-            animation: clickAnimation 0.3s ease;
+            animation: clickAnimation var(--animation-duration) ease;
         }
     </style>
 </head>
