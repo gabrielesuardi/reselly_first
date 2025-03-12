@@ -37,6 +37,12 @@
             margin: var(--spacing-small) 0;
         }
 
+        h1 + p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
         h2 {
             text-transform: uppercase;
             border-bottom: 2px solid #000;
@@ -69,13 +75,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .tab-button:nth-child(2) {
-            padding: 12px 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: perspective(1px) translateZ(0);
         }
 
-        .tab-button:nth-child(2) i {
-            margin-right: 8px;
+        .tab-button:hover,
+        .tab-button.active {
+            background: #000;
+            color: #fff;
+            transform: scale(1.05) perspective(1px) translateZ(0);
         }
 
         .tab-content {
@@ -141,7 +149,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transform: perspective(1px) translateZ(0);
         }
-        
+
         .video-filter.active,
         .video-filter:hover {
             background: #000;
@@ -168,86 +176,59 @@
         form {
             max-width: 500px;
             margin: var(--spacing-medium) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         form select,
-        form input {
-            width: 100%;
-            padding: 12px;
+        form input,
+        form button {
             margin: 10px 0;
+            padding: 12px;
             border: 2px solid #000;
             border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 300px;
         }
 
-        /* CSS Animations */
-
-        .tab-button {
-            background: #fff;
-            color: #000;
-            border: 2px solid #000;
-            padding: 12px 18px;
+        #result {
+            margin-top: 20px;
             font-size: 1.2em;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: perspective(1px) translateZ(0);
-    }
-    
-    .tab-button:hover,
-    .tab-button.active {
-        background: #000;
-        color: #fff;
-        transform: scale(1.05) perspective(1px) translateZ(0);
-    }
-    
-    @keyframes clickAnimation {
-        0% { transform: scale(1); }
-        50% { transform: scale(0.95); }
-        100% { transform: scale(1); }
-    }
-    
-    .video-item.animate {
-        animation: clickAnimation 0.3s ease;
-    }
+            font-weight: bold;
+        }
 
+        @keyframes clickAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .video-item.animate {
+            animation: clickAnimation 0.3s ease;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>RESELLY</h1>
+        <p>Gratis per sempre</p>
     </header>
 
     <!-- Calcolatrice -->
     <div id="calcolatrice" class="tab-content active">
         <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
         <form id="calculatorForm">
-            <select id="store">
+            <select id="store" onchange="toggleInputField()">
                 <option value="eBay">eBay</option>
                 <option value="Amazon">Amazon</option>
                 <option value="AliExpress">AliExpress</option>
             </select>
-            <input type="number" id="amount" placeholder="Importo Vendita (€)" required size = "50%" align ="left"> <input type="number" id="amount" placeholder="% pubblicitaria" required size = "50%">
+            <input type="number" id="amount" placeholder="Importo Vendita (€)" required>
+            <input type="number" id="optionalInput" placeholder="% pubblicitaria" required>
             <button type="submit" class="buy-button">Calcola</button>
         </form>
         <div id="result"></div>
-
-        <h2><i class="fa-solid fa-box-open icon"></i>Imballaggi Economici</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="imballaggio1.jpg" alt="Imballaggio">
-                <p>Scatole per spedizioni</p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.freepik.com/512/3301/3301172.png" alt="Imballaggio">
-                <p>Bolle protettive</p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
-            </div>
-        </div>
     </div>
 
     <!-- Fornitori -->
@@ -269,46 +250,46 @@
 
     <!-- Video -->
     <div id="guida" class="tab-content">
-    <div class="video-filters">
-        <button class="video-filter active" data-filter="all">Tutti</button>
-        <button class="video-filter" data-filter="ebay">eBay</button>
-        <button class="video-filter" data-filter="vinted">Vinted</button>
-        <button class="video-filter" data-filter="etsy">Etsy</button>
-        <button class="video-filter" data-filter="cardmarket">Cardmarket</button>
-        <button class="video-filter" data-filter="subito">Subito</button>
-        <button class="video-filter" data-filter="truffe" style="background-color: yellow;">Truffe</button>
+        <div class="video-filters">
+            <button class="video-filter active" data-filter="all">Tutti</button>
+            <button class="video-filter" data-filter="ebay">eBay</button>
+            <button class="video-filter" data-filter="vinted">Vinted</button>
+            <button class="video-filter" data-filter="etsy">Etsy</button>
+            <button class="video-filter" data-filter="cardmarket">Cardmarket</button>
+            <button class="video-filter" data-filter="subito">Subito</button>
+            <button class="video-filter" data-filter="truffe" style="background-color: yellow;">Truffe</button>
+        </div>
+        <div class="video-container">
+            <div class="card video-item" data-platform="ebay">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Guida eBay Base</p>
+            </div>
+            <div class="card video-item" data-platform="truffe">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su eBay</p>
+            </div>
+            <div class="card video-item" data-platform="truffe">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su Subito</p>
+            </div>
+            <div class="card video-item" data-platform="truffe">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su Vinted</p>
+            </div>
+            <div class="card video-item" data-platform="vinted">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
+                <p>Vinted Pro Tips</p>
+            </div>
+            <div class="card video-item" data-platform="etsy">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
+                <p>Etsy Marketing</p>
+            </div>
+            <div class="card video-item" data-platform="cardmarket">
+                <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
+                <p>Cardmarket Advanced</p>
+            </div>
+        </div>
     </div>
-    <div class="video-container">
-        <div class="card video-item" data-platform="ebay">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-            <p>Guida eBay Base</p>
-        </div>
-        <div class="card video-item" data-platform="truffe">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-            <p>Truffe su eBay</p>
-        </div>
-        <div class="card video-item" data-platform="truffe">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-            <p>Truffe su Subito</p>
-        </div>
-        <div class="card video-item" data-platform="truffe">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-            <p>Truffe su Vinted</p>
-        </div>
-        <div class="card video-item" data-platform="vinted">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
-            <p>Vinted Pro Tips</p>
-        </div>
-        <div class="card video-item" data-platform="etsy">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
-            <p>Etsy Marketing</p>
-        </div>
-        <div class="card video-item" data-platform="cardmarket">
-            <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
-            <p>Cardmarket Advanced</p>
-        </div>
-    </div>
-</div>
 
     <!-- Tab Bar -->
     <div class="tab-container">
@@ -324,7 +305,6 @@
     </div>
 
     <script>
-        // Tabs
         function openTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
@@ -332,15 +312,27 @@
             event.currentTarget.classList.add('active');
         }
 
-        // Calcolatrice
+        function toggleInputField() {
+            const store = document.getElementById('store').value;
+            const optionalInput = document.getElementById('optionalInput');
+            if (store === 'eBay') {
+                optionalInput.placeholder = '% pubblicitaria';
+            } else {
+                optionalInput.placeholder = 'prezzo boost';
+            }
+        }
+
         document.getElementById('calculatorForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const rates = { eBay: 0.1, Amazon: 0.15, AliExpress: 0.05 };
-            const commission = document.getElementById('amount').value * rates[document.getElementById('store').value];
-            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}`;
+            const amount = document.getElementById('amount').value;
+            const optionalValue = document.getElementById('optionalInput').value;
+            const store = document.getElementById('store').value;
+            const commission = amount * rates[store];
+            const totalCost = amount - (optionalValue / 100 * amount);
+            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}<br>Totale: €${totalCost.toFixed(2)}`;
         });
 
-        // Filtri Video
         document.querySelectorAll('.video-filter').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.video-filter').forEach(btn => btn.classList.remove('active'));
@@ -353,13 +345,12 @@
             });
         });
 
-        // Gestione click sulle card video-item
         document.querySelectorAll('.video-item').forEach(card => {
             card.addEventListener('click', () => {
                 card.classList.add('animate');
                 setTimeout(() => {
                     card.classList.remove('animate');
-                }, 300); // La durata dell'animazione è 0.3s
+                }, 300);
             });
         });
     </script>
