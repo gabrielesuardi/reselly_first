@@ -146,7 +146,15 @@
             border-radius: calc(var(--border-radius) - 2px);
             margin-bottom: var(--spacing-small);
         }
-
+        
+        /* Aggiungi queste media queries */
+        @media (max-width: 768px) {
+            .card img {
+                width: 100%;
+                height: auto;
+                object-fit: contain; /* Cambia object-fit per una migliore visualizzazione su schermi piccoli */
+            }
+        }
         .card:hover {
             transform: scale(1.05);
         }
