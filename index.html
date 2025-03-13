@@ -146,8 +146,7 @@
             border-radius: calc(var(--border-radius) - 2px);
             margin-bottom: var(--spacing-small);
         }
-        
-        /* Aggiungi queste media queries */
+
         @media (max-width: 768px) {
             .card img {
                 width: 100%;
@@ -263,6 +262,57 @@
         .video-item.animate {
             animation: clickAnimation var(--animation-duration) ease;
         }
+
+        /* Additional styles for the calculator */
+        #calculatorContainer {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-medium);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: var(--spacing-large);
+        }
+
+        /* Carousel styles for imballaggi economici */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: var(--spacing-medium) 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            border-radius: var(--border-radius);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body onload="startTitleAnimation()">
@@ -274,7 +324,7 @@
     </header>
 
     <!-- Calcolatrice -->
-    <div id="calcolatrice" class="tab-content active">
+    <div id="calculatorContainer" class="tab-content active">
         <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
         <form id="calculatorForm">
             <select id="store" onchange="toggleInputField()">
@@ -286,25 +336,30 @@
             <button type="submit" class="buy-button">Calcola</button>
         </form>
         <div id="result"></div>
+    </div>
 
+    <!-- Imballaggi Economici -->
+    <div id="imballaggiEconomici" class="tab-content">
         <h2><i class="fa-solid fa-box-open icon"></i>Imballaggi Economici</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sa520cba76c0a4bea9b58fcf9380650f7Z.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
-                <p></p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sa520cba76c0a4bea9b58fcf9380650f7Z.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://ae-pic-a1.aliexpress-media.com/kf/S17c9d33d460c495ab8a8ffe1aa00cba5x.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
+                </div>
             </div>
-            <div class="card">
-                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S17c9d33d460c495ab8a8ffe1aa00cba5x.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
-                <p></p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
+            <div class="carousel-nav">
+                <button class="carousel-button prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-button next" onclick="moveCarousel(1)">❯</button>
             </div>
         </div>
     </div>
 
     <!-- Fornitori -->
     <div id="home" class="tab-content">
-        <h2><i class="fa-solid fa-truck-fast icon"></i>FORNITORI</h2>
+        <h2><i class="fa-solid fa-house icon"></i>HOME</h2>
         <div class="grid">
             <div class="card">
                 <img src="new_fornitore_elettronica.jpg" alt="Fornitore Elettronica">
@@ -312,7 +367,7 @@
                 <button class="buy-button">Contatta</button>
             </div>
             <div class="card">
-                <img src="fornitore2.jpg" alt="Fornitore">
+                <img src="fornitore2.jpg" alt="Fornitore Abbigliamento">
                 <p>Fornitore Abbigliamento</p>
                 <button class="buy-button">Contatta</button>
             </div>
@@ -371,11 +426,14 @@
 
     <!-- Tab Bar -->
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab('calcolatrice')">
+        <button class="tab-button active" onclick="openTab('calculatorContainer')">
             <i class="fa-solid fa-calculator"></i>
         </button>
         <button class="tab-button" onclick="openTab('home')">
-            <i class="fa-solid fa-boxes-packing"></i> Fornitori
+            <i class="fa-solid fa-house"></i> HOME
+        </button>
+        <button class="tab-button" onclick="openTab('imballaggiEconomici')">
+            <i class="fa-solid fa-box-open"></i>
         </button>
         <button class="tab-button" onclick="openTab('guida')">
             <i class="fa-brands fa-youtube"></i>
@@ -412,41 +470,4 @@
             } else if (store === 'Vinted') {
                 commission = Number(optionalValue);
             }
-            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2)}`;
-        });
-
-        document.querySelectorAll('.video-filter').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.video-filter').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filter = button.dataset.filter;
-                document.querySelectorAll('.video-item').forEach(video => {
-                    video.style.display = (filter === 'all' || video.dataset.platform === filter) ? 'block' : 'none';
-                });
-            });
-        });
-
-        document.querySelectorAll('.video-item').forEach(card => {
-            card.addEventListener('click', () => {
-                card.classList.add('animate');
-                setTimeout(() => {
-                    card.classList.remove('animate');
-                }, 300);
-            });
-        });
-
-        function startTitleAnimation() {
-            const title = document.getElementById('title-animation');
-            title.classList.add('start-animation');
-            setTimeout(() => {
-                title.classList.remove('start-animation');
-            }, 3000); // Adjust the duration as needed
-        }
-
-        function toggleCheckmark(card) {
-            card.classList.toggle('checked');
-        }
-    </script>
-</body>
-</html>
+            document.getElementById('result').innerHTML = `Commissione: €${commission.toFixed(2
