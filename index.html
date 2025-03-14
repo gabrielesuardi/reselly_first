@@ -16,8 +16,25 @@
         <p>Gratis per sempre</p>
     </header>
 
+    <!-- Fornitori -->
+    <div id="home" class="tab-content active">
+        <h2><i class="fa-solid fa-truck-fast icon"></i>FORNITORI</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="new_fornitore_elettronica.jpg" alt="Fornitore Elettronica">
+                <p>Fornitore Elettronica</p>
+                <button class="buy-button">Contatta</button>
+            </div>
+            <div class="card">
+                <img src="fornitore2.jpg" alt="Fornitore">
+                <p>Fornitore Abbigliamento</p>
+                <button class="buy-button">Contatta</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Calcolatrice -->
-    <div id="calcolatrice" class="tab-content active">
+    <div id="calcolatrice" class="tab-content">
         <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
         <form id="calculatorForm">
             <select id="store" onchange="toggleInputField()">
@@ -41,23 +58,6 @@
                 <img src="https://ae-pic-a1.aliexpress-media.com/kf/S17c9d33d460c495ab8a8ffe1aa00cba5x.jpg_220x220q75.jpg_.avif" alt="Imballaggio">
                 <p></p>
                 <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Fornitori -->
-    <div id="home" class="tab-content">
-        <h2><i class="fa-solid fa-truck-fast icon"></i>FORNITORI</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="new_fornitore_elettronica.jpg" alt="Fornitore Elettronica">
-                <p>Fornitore Elettronica</p>
-                <button class="buy-button">Contatta</button>
-            </div>
-            <div class="card">
-                <img src="fornitore2.jpg" alt="Fornitore">
-                <p>Fornitore Abbigliamento</p>
-                <button class="buy-button">Contatta</button>
             </div>
         </div>
     </div>
@@ -114,11 +114,11 @@
 
     <!-- Tab Bar -->
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab('calcolatrice')">
+        <button class="tab-button" onclick="openTab('calcolatrice')">
             <i class="fa-solid fa-calculator"></i>
         </button>
-        <button class="tab-button" onclick="openTab('home')">
-            <i class="fa-solid fa-boxes-packing"></i> Fornitori
+        <button class="tab-button active" onclick="openTab('home')">
+            <i class="fa-solid fa-home"></i>
         </button>
         <button class="tab-button" onclick="openTab('guida')">
             <i class="fa-brands fa-youtube"></i>
