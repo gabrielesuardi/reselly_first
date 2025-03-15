@@ -143,17 +143,25 @@ h2 {
 }
 
 .buy-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 12px 18px;
+    font-size: 1.2em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all var(--animation-duration);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: perspective(1px) translateZ(0);
 }
 
 .buy-button:hover {
-    background-color: #0056b3;
+    background: #000;
+    color: #fff;
+    transform: scale(1.05) perspective(1px) translateZ(0);
 }
 
 /* Additional padding for smaller screens */
