@@ -246,3 +246,26 @@ form button {
 .video-item.animate {
     animation: clickAnimation var(--animation-duration) ease;
 }
+
+/* Add this to your style.css file */
+
+/* Apply padding to all sections */
+.section {
+    padding: 20px;
+}
+
+/* Additional padding for smaller screens */
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 20px;
+    }
+    
+    .tab-content,
+    .tab-container {
+        padding: 20px;
+    }
+
+    header {
+        padding: 20px;
+    }
+}
