@@ -1,1 +1,63 @@
- 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIDA RESELLING</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="startTitleAnimation()">
+    <header>
+        <h1 id="title-animation">
+            <span>R</span><span>E</span><span>S</span><span>E</span><span>L</span><span>L</span><span>Y</span>
+        </h1>
+        <p>Gratis per sempre</p>
+    </header>
+
+    <!-- Calcolatrice -->
+    <div id="calcolatrice" class="tab-content">
+        <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
+        <form id="calculatorForm">
+            <select id="store" onchange="toggleInputField()">
+                <option value="eBay">eBay</option>
+                <option value="Vinted">Vinted</option>
+            </select>
+            <input type="number" id="amount" placeholder="Importo Vendita (€)" required>
+            <input type="number" id="optionalInput" placeholder="% pubblicitaria" required>
+            <button type="submit" class="buy-button">Calcola</button>
+        </form>
+        <div id="result"></div>
+
+        <h2><i class="fa-solid fa-box-open icon"></i>Imballaggi Economici</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="imballaggio1.jpg" alt="Imballaggio">
+                <p>Scatole per spedizioni</p>
+                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
+            </div>
+            <div class="card">
+                <img src="https://cdn-icons-png.freepik.com/512/3301/3301172.png" alt="Imballaggio">
+                <p>Bolle protettive</p>
+                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-container">
+        <button class="tab-button active" onclick="openTab('calcolatrice')">
+            <i class="fa-solid fa-calculator"></i>
+        </button>
+        <button class="tab-button" onclick="openTab('home')">
+            <i class="fa-solid fa-boxes-packing"></i> Fornitori
+        </button>
+        <button class="tab-button" onclick="openTab('guida')">
+            <i class="fa-brands fa-youtube"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
