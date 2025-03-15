@@ -142,28 +142,6 @@ h2 {
     margin: 10px 0;
 }
 
-.buy-button {
-    background: #fff;
-    color: #000;
-    border: 2px solid #000;
-    padding: 12px 18px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: all var(--animation-duration);
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: perspective(1px) translateZ(0);
-}
-
-.buy-button:hover {
-    background: #000;
-    color: #fff;
-    transform: scale(1.05) perspective(1px) translateZ(0);
-}
-
 /* Additional padding for smaller screens */
 @media screen and (max-width: 768px) {
     .section {
