@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUIDA RESELLING</title>
+    <title>Calcolatrice Commissioni</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="startTitleAnimation()">
+<body>
     <header>
         <h1 id="title-animation">
             <span>R</span><span>E</span><span>S</span><span>E</span><span>L</span><span>L</span><span>Y</span>
         </h1>
         <p>Gratis per sempre</p>
     </header>
-
+    
     <!-- Calcolatrice -->
-    <div id="calcolatrice" class="tab-content">
+    <div id="calcolatrice" class="tab-content active">
         <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
         <form id="calculatorForm">
             <select id="store" onchange="toggleInputField()">
@@ -47,17 +47,17 @@
 
     <!-- Tab Bar -->
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab('calcolatrice')">
+        <button class="tab-button active" onclick="location.href='calcolatrice.html'">
             <i class="fa-solid fa-calculator"></i>
         </button>
-        <button class="tab-button" onclick="openTab('home')">
+        <button class="tab-button" onclick="location.href='index.html'">
             <i class="fa-solid fa-boxes-packing"></i> Fornitori
         </button>
-        <button class="tab-button" onclick="openTab('guida')">
+        <button class="tab-button" onclick="location.href='video.html'">
             <i class="fa-brands fa-youtube"></i>
         </button>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
