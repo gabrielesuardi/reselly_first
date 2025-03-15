@@ -16,35 +16,6 @@
         <p>Gratis per sempre</p>
     </header>
 
-    <!-- Calcolatrice -->
-    <div id="calcolatrice" class="tab-content">
-        <h2><i class="fa-solid fa-calculator icon"></i>Calcolatrice Commissioni</h2>
-        <form id="calculatorForm">
-            <select id="store" onchange="toggleInputField()">
-                <option value="eBay">eBay</option>
-                <option value="Vinted">Vinted</option>
-            </select>
-            <input type="number" id="amount" placeholder="Importo Vendita (€)" required>
-            <input type="number" id="optionalInput" placeholder="% pubblicitaria" required>
-            <button type="submit" class="buy-button">Calcola</button>
-        </form>
-        <div id="result"></div>
-
-        <h2><i class="fa-solid fa-box-open icon"></i>Imballaggi Economici</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="imballaggio1.jpg" alt="Imballaggio">
-                <p>Scatole per spedizioni</p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.freepik.com/512/3301/3301172.png" alt="Imballaggio">
-                <p>Bolle protettive</p>
-                <button class="buy-button"><i class="fa-solid fa-cart-shopping"></i> Acquista</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Fornitori -->
     <div id="home" class="tab-content active">
         <h2><i class="fa-solid fa-truck-fast icon"></i>FORNITORI</h2>
@@ -62,65 +33,15 @@
         </div>
     </div>
 
-    <!-- Video -->
-    <div id="guida" class="tab-content">
-        <div class="video-filters">
-            <button class="video-filter active" data-filter="all"><i class="fa-brands fa-youtube"></i> Tutti</button>
-            <button class="video-filter" data-filter="ebay"><i class="fa-brands fa-youtube"></i> eBay</button>
-            <button class="video-filter" data-filter="vinted"><i class="fa-brands fa-youtube"></i> Vinted</button>
-            <button class="video-filter" data-filter="etsy"><i class="fa-brands fa-youtube"></i> Etsy</button>
-            <button class="video-filter" data-filter="cardmarket"><i class="fa-brands fa-youtube"></i> Cardmarket</button>
-            <button class="video-filter" data-filter="subito"><i class="fa-brands fa-youtube"></i> Subito</button>
-            <button class="video-filter" data-filter="truffe" style="background-color: yellow;"><i class="fa-brands fa-youtube"></i> Truffe</button>
-        </div>
-        <div class="video-container">
-            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Guida eBay Base</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="truffeebay" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su eBay</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="truffesubito" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su Subito</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="vinted" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-                <p>Truffe su Vinted</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="ebay" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
-                <p>Vinted Pro Tips</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="etsy" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
-                <p>Etsy Marketing</p>
-                <div class="checkmark"></div>
-            </div>
-            <div class="card video-item" data-platform="cardmarket" onclick="toggleCheckmark(this)">
-                <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
-                <p>Cardmarket Advanced</p>
-                <div class="checkmark"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Tab Bar -->
     <div class="tab-container">
-        <button class="tab-button active" onclick="openTab('calcolatrice')">
+        <button class="tab-button" onclick="location.href='calcolatrice.html'">
             <i class="fa-solid fa-calculator"></i>
         </button>
-        <button class="tab-button" onclick="openTab('home')">
+        <button class="tab-button active" onclick="location.href='index.html'">
             <i class="fa-solid fa-boxes-packing"></i> Fornitori
         </button>
-        <button class="tab-button" onclick="openTab('guida')">
+        <button class="tab-button" onclick="location.href='video.html'">
             <i class="fa-brands fa-youtube"></i>
         </button>
     </div>
