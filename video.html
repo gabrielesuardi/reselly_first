@@ -1,1 +1,84 @@
- 
+ <!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Guida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="title-animation">
+            <span>R</span><span>E</span><span>S</span><span>E</span><span>L</span><span>L</span><span>Y</span>
+        </h1>
+        <p>Gratis per sempre</p>
+    </header>
+
+    <!-- Video -->
+    <div id="guida" class="tab-content active">
+        <div class="video-filters">
+            <button class="video-filter active" data-filter="all"><i class="fa-brands fa-youtube"></i> Tutti</button>
+            <button class="video-filter" data-filter="ebay"><i class="fa-brands fa-youtube"></i> eBay</button>
+            <button class="video-filter" data-filter="vinted"><i class="fa-brands fa-youtube"></i> Vinted</button>
+            <button class="video-filter" data-filter="etsy"><i class="fa-brands fa-youtube"></i> Etsy</button>
+            <button class="video-filter" data-filter="cardmarket"><i class="fa-brands fa-youtube"></i> Cardmarket</button>
+            <button class="video-filter" data-filter="subito"><i class="fa-brands fa-youtube"></i> Subito</button>
+            <button class="video-filter" data-filter="truffe" style="background-color: yellow;"><i class="fa-brands fa-youtube"></i> Truffe</button>
+        </div>
+        <div class="video-container">
+            <div class="card video-item" data-platform="youtube" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Guida eBay Base</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="truffeebay" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su eBay</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="truffesubito" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su Subito</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="vinted" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
+                <p>Truffe su Vinted</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="ebay" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
+                <p>Vinted Pro Tips</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="etsy" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
+                <p>Etsy Marketing</p>
+                <div class="checkmark"></div>
+            </div>
+            <div class="card video-item" data-platform="cardmarket" onclick="toggleCheckmark(this)">
+                <iframe src="https://www.youtube.com/embed/977vZJrpQaM?si=CvmPtNd047DXSe5P"></iframe>
+                <p>Cardmarket Advanced</p>
+                <div class="checkmark"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-container">
+        <button class="tab-button" onclick="location.href='calcolatrice.html'">
+            <i class="fa-solid fa-calculator"></i>
+        </button>
+        <button class="tab-button" onclick="location.href='index.html'">
+            <i class="fa-solid fa-boxes-packing"></i> Fornitori
+        </button>
+        <button class="tab-button active" onclick="location.href='video.html'">
+            <i class="fa-brands fa-youtube"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
