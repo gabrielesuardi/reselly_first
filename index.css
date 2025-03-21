@@ -113,11 +113,23 @@ h2 {
     display: block;
 }
 
+/* Esistente */
 .grid {
     display: flex;
     flex-direction: column; /* Imposta la direzione della griglia in colonna */
     gap: 20px; /* Distanza tra le carte */
     align-items: center; /* Allinea gli elementi al centro */
+}
+
+/* Nuovo */
+@media screen and (max-width: 768px) {
+    .grid {
+        padding: 0 20px; /* Aggiunge padding laterale al container */
+    }
+    
+    .card {
+        margin: 0 10px; /* Aggiunge margini laterali alle schede */
+    }
 }
 
 .card {
@@ -140,20 +152,4 @@ h2 {
 .card p {
     font-size: 1.2rem;
     margin: 10px 0;
-}
-
-/* Additional padding for smaller screens */
-@media screen and (max-width: 768px) {
-    .section {
-        padding: 20px;
-    }
-    
-    .tab-content,
-    .tab-container {
-        padding: 20px;
-    }
-
-    header {
-        padding: 20px;
-    }
 }
